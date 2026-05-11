@@ -149,27 +149,36 @@ st.subheader("💰 Impact of Salary on Employee Retention")
 
 fig1, axes = plt.subplots(1, 2, figsize=(14, 5))
 
-# Count plot
+# FIXED: Use color palette correctly with proper mapping
 salary_order = ['low', 'medium', 'high']
-salary_palette = {'low': '#ff6b6b', 'medium': '#ffd93d', 'high': '#6bcf7f'}
 
+# Method 1: Use built-in palette names instead of dictionary
 sns.countplot(data=df, x='salary', hue='left', 
-              order=salary_order, palette=salary_palette, ax=axes[0])
+              order=salary_order, 
+              palette={0: '#ff6b6b', 1: '#6bcf7f'},  # Using Python ints
+              ax=axes[0])
 axes[0].set_title('Salary Level vs Employee Retention', fontsize=14, fontweight='bold')
 axes[0].set_xlabel('Salary Level')
 axes[0].set_ylabel('Employee Count')
 axes[0].legend(title='Left Company', labels=['Stayed (0)', 'Left (1)'])
 
+# OR alternative: Use standard seaborn palettes (uncomment to use)
+# sns.countplot(data=df, x='salary', hue='left', 
+#               order=salary_order, 
+#               palette='Set1',  # This works without dictionary
+#               ax=axes[0])
+
 # Percentage plot
 salary_left_pct = df.groupby('salary')['left'].mean() * 100
-axes[1].bar(salary_order, salary_left_pct, color=['#ff6b6b', '#ffd93d', '#6bcf7f'])
+colors = ['#ff6b6b', '#ffd93d', '#6bcf7f']
+bars = axes[1].bar(salary_order, salary_left_pct, color=colors)
 axes[1].set_title('Percentage Who Left by Salary Level', fontsize=14, fontweight='bold')
 axes[1].set_xlabel('Salary Level')
 axes[1].set_ylabel('Left Company (%)')
 axes[1].set_ylim(0, 100)
 
 # Add percentage labels on bars
-for i, (bar, pct) in enumerate(zip(axes[1].bars, salary_left_pct)):
+for bar, pct in zip(bars, salary_left_pct):
     axes[1].text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1, 
                  f'{pct:.1f}%', ha='center', fontweight='bold')
 
@@ -208,9 +217,15 @@ st.subheader("😊 Satisfaction Level Impact")
 
 fig3 = plt.figure(figsize=(12, 5))
 
-# Histogram
+# FIXED: Use palette with correct key types
+# Convert 'left' to categorical for proper coloring
+df['left_category'] = df['left'].astype('category')
+
+# Method 1: Use dictionary with string keys after conversion
 sns.histplot(data=df, x='satisfaction_level', hue='left', 
-             bins=30, alpha=0.6, palette={0: '#6bcf7f', 1: '#ff6b6b'})
+             bins=30, alpha=0.6, 
+             palette={0: '#6bcf7f', 1: '#ff6b6b'},  # Using Python ints
+             multiple="layer")
 plt.title('Satisfaction Level Distribution: Stayed vs Left', fontsize=14, fontweight='bold')
 plt.xlabel('Satisfaction Level')
 plt.ylabel('Employee Count')
@@ -218,6 +233,14 @@ plt.legend(title='Left Company', labels=['Stayed (0)', 'Left (1)'])
 plt.grid(axis='y', alpha=0.3)
 
 st.pyplot(fig3)
+
+# Alternative: Using seaborn's built-in palettes (simpler)
+# st.subheader("😊 Satisfaction Level Impact (Alternative View)")
+# fig3_alt = plt.figure(figsize=(12, 5))
+# sns.histplot(data=df, x='satisfaction_level', hue='left', 
+#              bins=30, alpha=0.6, palette='Set2')
+# plt.title('Satisfaction Level Distribution', fontsize=14, fontweight='bold')
+# st.pyplot(fig3_alt)
 
 # 4. Correlation Heatmap
 st.subheader("🔥 Correlation Heatmap")
@@ -259,9 +282,9 @@ default_features = ['satisfaction_level', 'average_montly_hours', 'promotion_las
 # Show correlation insights
 st.info("💡 Based on the correlation heatmap, these features have the strongest relationship with employee retention:")
 
-all_numeric_features = list(df.select_dtypes(include=[np.number]).columns)
-if 'left' in all_numeric_features:
-    all_numeric_features.remove('left')
+all_numeric_features = [col for col in df.select_dtypes(include=[np.number]).columns if col != 'left' and col != 'left_category']
+if 'left_category' in all_numeric_features:
+    all_numeric_features.remove('left_category')
 
 selected_features = st.multiselect(
     "Select features to use in the model:",
@@ -503,6 +526,10 @@ if 'model' in st.session_state:
             file_name="hr_retention_predictions.csv",
             mime="text/csv"
         )
+
+# Clean up temporary column
+if 'left_category' in df.columns:
+    df.drop('left_category', axis=1, inplace=True)
 
 # -----------------------------------
 # FOOTER
