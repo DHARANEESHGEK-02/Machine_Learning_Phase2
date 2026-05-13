@@ -190,12 +190,6 @@ Open the notebook file and run all cells.
 
 ---
 
-## 👨‍💻 Author
-
-Developed by **Dharaneesh**
-
----
-
 ## ⭐ Conclusion
 
 This project demonstrates the complete Machine Learning workflow from preprocessing to model evaluation. It helps in understanding how Machine Learning techniques can be applied to solve real-world data-driven problems.
