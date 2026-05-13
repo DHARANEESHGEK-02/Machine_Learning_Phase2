@@ -162,11 +162,6 @@ ann_diabetes_project - task.ipynb
 - Improve Accuracy
 - Add Visualization Dashboard
 
----
-
-## 👨‍💻 Author
-
-Developed by **Dharaneesh**
 
 ---
 
