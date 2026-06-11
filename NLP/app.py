@@ -21,7 +21,6 @@ matplotlib.use("Agg")
 # ─── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Job Recommendation System",
-    page_icon="💼",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -287,10 +286,10 @@ def recommend_jobs(user_skills_raw, top_n, filter_category, df, tfidf, tfidf_mat
 # ─── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown("## ⚙️ Settings")
+    st.markdown("##  Settings")
     st.markdown("---")
 
-    top_n = st.slider("📋 Number of Results", min_value=3, max_value=20, value=5, step=1)
+    top_n = st.slider(" Number of Results", min_value=3, max_value=20, value=5, step=1)
 
     try:
         df_meta, _, _ = build_engine()
@@ -301,13 +300,13 @@ with st.sidebar:
     filter_cat = st.selectbox("🗂 Filter by Category", categories)
 
     st.markdown("---")
-    st.markdown("### 💡 Example Skills")
+    st.markdown("###  Example Skills")
     examples = {
-        "💻 IT / ML":    "Python, machine learning, SQL, data analysis, TensorFlow, NLP",
-        "👥 HR":         "talent acquisition, employee relations, performance management, payroll, SHRM",
-        "📊 Finance":    "financial analysis, budgeting, forecasting, Excel, risk management, CPA",
-        "🛒 Sales":      "B2B sales, CRM, Salesforce, cold calling, lead generation",
-        "💼 Biz Dev":    "business development, strategic partnerships, market research, negotiation",
+        " IT / ML":    "Python, machine learning, SQL, data analysis, TensorFlow, NLP",
+        " HR":         "talent acquisition, employee relations, performance management, payroll, SHRM",
+        " Finance":    "financial analysis, budgeting, forecasting, Excel, risk management, CPA",
+        " Sales":      "B2B sales, CRM, Salesforce, cold calling, lead generation",
+        " Biz Dev":    "business development, strategic partnerships, market research, negotiation",
     }
     for label, skills in examples.items():
         if st.button(label, key=f"ex_{label}"):
@@ -322,7 +321,7 @@ with st.sidebar:
 # Hero
 st.markdown("""
 <div style='padding: 2.5rem 0 1.5rem;'>
-  <div class='hero-title'>💼 Job Recommendation System</div>
+  <div class='hero-title'> Job Recommendation System</div>
   <div class='hero-sub'>Enter your skills and discover perfectly matched job opportunities</div>
 </div>
 """, unsafe_allow_html=True)
@@ -355,7 +354,7 @@ if engine_ok:
 
 # ─── Input ─────────────────────────────────────────────────────────────────────
 st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-st.markdown("### 🎯 Enter Your Skills")
+st.markdown("###  Enter Your Skills")
 st.markdown("<p style='color:rgba(255,255,255,0.5);font-size:0.9rem;'>Separate multiple skills with commas</p>", unsafe_allow_html=True)
 
 default_skills = st.session_state.get("skills_input", "")
@@ -369,14 +368,14 @@ user_skills = st.text_area(
 
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    submit = st.button("🚀 Find My Jobs", use_container_width=True)
+    submit = st.button(" Find My Jobs", use_container_width=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
 
 # ─── Results ───────────────────────────────────────────────────────────────────
 if submit and engine_ok:
     if not user_skills.strip():
-        st.warning("⚠️ Please enter at least one skill before searching.")
+        st.warning(" Please enter at least one skill before searching.")
     else:
         with st.spinner("Finding best matches…"):
             results, processed_query = recommend_jobs(
@@ -386,17 +385,17 @@ if submit and engine_ok:
             )
 
         if results is None:
-            st.error(f"❌ {processed_query}")
+            st.error(f" {processed_query}")
         else:
             st.markdown(f"""
             <div style='background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);
                 border-radius:12px;padding:0.8rem 1.2rem;margin-bottom:1.5rem;'>
-              <span style='color:#34d399;font-weight:600;'>✅ Processed query:</span>
+              <span style='color:#34d399;font-weight:600;'> Processed query:</span>
               <span style='color:rgba(255,255,255,0.7);'> {processed_query}</span>
             </div>
             """, unsafe_allow_html=True)
 
-            tab1, tab2, tab3 = st.tabs(["🎯 Recommendations", "📊 Score Chart", "📋 Full Table"])
+            tab1, tab2, tab3 = st.tabs([" Recommendations", " Score Chart", " Full Table"])
 
             # ── Tab 1 : Cards ────────────────────────────────────────────────
             with tab1:
@@ -418,7 +417,7 @@ if submit and engine_ok:
                       <div class='result-title' style='margin-top:6px;'>{row['job_title']}</div>
                       <span class='result-cat'>{row['category']}</span>
                       <div style='color:rgba(255,255,255,0.4);font-size:0.8rem;margin-top:6px;'>
-                        🔑 {skills_preview}
+                          {skills_preview}
                       </div>
                       <div class='score-bar-bg'>
                         <div class='score-bar-fill' style='width:{bar_w}%;background:linear-gradient(90deg,{color},{color}99);'></div>
@@ -464,7 +463,7 @@ if submit and engine_ok:
 # ─── EDA section ───────────────────────────────────────────────────────────────
 if engine_ok:
     st.markdown("---")
-    with st.expander("📊 Dataset Overview", expanded=False):
+    with st.expander(" Dataset Overview", expanded=False):
         col1, col2 = st.columns(2)
 
         with col1:
