@@ -1,40 +1,64 @@
-# Job Recommendation System
+<div align="center">
 
-This repository contains a Streamlit job recommendation app using TF-IDF and cosine similarity.
+# 🚀 Machine Learning Phase 2
 
-## Ready to deploy
+### *Data Science Project Portfolio*
 
-The app is deployable to:
+[![GitHub stars](https://img.shields.io/badge/⭐-GitHub%20Stars-blue?style=social)](https://github.com/DHARANEESHGEK-02/machine_learning_phase2/stargazers)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- **Streamlit Community Cloud**
-- **Hugging Face Spaces (Streamlit)**
+</div>
 
-## Files
+---
 
-- `app.py` — main Streamlit application
-- `requirements.txt` — Python dependencies
-- `all_job_post.csv` — dataset used by the app
+## 📊 **Overview**
 
-## Deploy on Streamlit Community Cloud
+This repository contains two complete **end-to-end Machine Learning projects** with interactive **Streamlit** web applications. The projects demonstrate real-world applications of **Logistic Regression** for prediction tasks.
 
-1. Push this repository to GitHub.
-2. Go to https://share.streamlit.io/
-3. Click `New app` and connect your GitHub repo.
-4. Select the repository, branch, and `app.py` as the main file.
-5. Deploy.
+| Project | Domain | Key Features |
+|---------|--------|--------------|
+| 🏦 **Insurance Purchase Prediction** | Finance | Age-based prediction, Probability scores |
+| 👥 **HR Employee Retention Analytics** | Human Resources | Attrition risk, Feature analysis |
 
-## Deploy on Hugging Face Spaces
+### 🛠️ Tech Stack
 
-1. Push this repository to GitHub (or upload it directly to Hugging Face).
-2. Go to https://huggingface.co/spaces
-3. Create a new Space.
-4. Choose `Streamlit` as the SDK.
-5. Connect your GitHub repo or upload the repository contents.
-6. Make sure `requirements.txt` is present.
-7. Start the Space.
+<div align="center">
 
-## Notes
+`🐍 Python` &nbsp; | &nbsp; `🎨 Streamlit` &nbsp; | &nbsp; `🤖 scikit-learn` &nbsp; | &nbsp; `📊 Pandas` &nbsp; | &nbsp; `📈 Matplotlib` &nbsp; | &nbsp; `🎨 Seaborn`
 
-- `requirements.txt` already includes `streamlit`, `nltk`, `pandas`, `numpy`, `scikit-learn`, `matplotlib`, and `scipy`.
-- The app downloads NLTK data on first startup and caches it locally.
-- Keep `all_job_post.csv` in the repository so the app can load the dataset on deploy.
+</div>
+
+---
+
+## 🎯 **Live Demos**
+
+<div align="center">
+
+| Application | Live Demo | Status |
+|-------------|-----------|--------|
+| 🏦 **Insurance Purchase Prediction** | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dharanees-qdcgwgrxojd27aw9tjw64v.streamlit.app/) | ✅ Active |
+| 👥 **HR Employee Retention Analytics** | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://dharaneesh-xah29pvunn2mzoi5skw8ta.streamlit.app/) | ✅ Active |
+
+</div>
+
+---
+
+## 🏦 **Project 1: Insurance Purchase Prediction**
+
+### 📝 Description
+Predicts whether a person will purchase **travel insurance** based on their age using Logistic Regression.
+
+### ✨ Features
+- ✅ **Live Predictions** - Adjust age slider to see real-time predictions
+- ✅ **Probability Scores** - Get percentage chance of purchase
+- ✅ **Data Upload** - Upload custom CSV datasets
+- ✅ **Sample Data** - Test with built-in dataset
+- ✅ **Model Metrics** - Accuracy, confusion matrix, coefficients
+- ✅ **Custom Threshold** - Adjust decision boundary
+
+### 🚀 Run Locally
+```bash
+cd Insurance
+streamlit run insurance.py
