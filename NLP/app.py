@@ -165,8 +165,8 @@ hr { border-color: rgba(255,255,255,0.1) !important; }
 import sys
 
 # Works both locally and on Streamlit Cloud
-if os.path.exists("/mount/src/machine_learning_phase2/NLP/all_job_post.csv"):
-    DATA_PATH = "/mount/src/machine_learning_phase2/NLP/all_job_post.csv"
+if os.path.exists("/mount/src/Machine_Learning_Phase2/NLP/all_job_post.csv"):
+    DATA_PATH = "/mount/src/Machine_Learning_Phase2/NLP/all_job_post.csv"
 else:
     DATA_PATH = os.path.join(BASE_DIR, "all_job_post.csv")
 
