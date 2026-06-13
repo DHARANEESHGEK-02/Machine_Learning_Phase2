@@ -1,7 +1,8 @@
-pandas
-numpy
-scikit-learn
-nltk
-streamlit
-scipy
-matplotlib
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.2
+nltk==3.8.1
+streamlit==1.38.0
+scipy==1.13.0
+matplotlib==3.8.4
+pillow==10.4.0
