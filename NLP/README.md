@@ -1,10 +1,10 @@
-# 🔍 Job Recommendation System
+#  Job Recommendation System
 
 An NLP-powered job recommendation engine that matches users to relevant job postings based on their skills, using TF-IDF vectorization and cosine similarity.
 
 ---
 
-## 📌 Overview
+##  Overview
 
 Given a user's skill set, this system recommends the most relevant job postings from a dataset of 1,167 jobs across 5 categories. It also provides a **skill gap analysis** that shows which required skills the user already has, which are missing, and which extras they bring to the table.
 
@@ -16,7 +16,7 @@ Raw CSV → EDA → Preprocessing → NLP (TF-IDF) → Cosine Similarity → Rec
 
 ---
 
-## 📁 Dataset
+##  Dataset
 
 | File | Description |
 |------|-------------|
@@ -35,7 +35,7 @@ Raw CSV → EDA → Preprocessing → NLP (TF-IDF) → Cosine Similarity → Rec
 
 ---
 
-## 🗂 Project Structure
+##  Project Structure
 
 ```
 job_recommendation_system.ipynb   # Main notebook
@@ -54,7 +54,7 @@ recommendations_*.png             # Recommendation score charts
 
 ---
 
-## ⚙️ Installation & Requirements
+##  Installation & Requirements
 
 ### Prerequisites
 
@@ -79,7 +79,7 @@ nltk.download('punkt_tab')
 
 ---
 
-## 🚀 Usage
+##  Usage
 
 ### 1. Clone / download the repository and place `all_job_post.csv` in the same directory as the notebook.
 
@@ -117,7 +117,7 @@ print(f"Missing : {gap['missing']}")
 
 ---
 
-## 🧠 How It Works
+##  How It Works
 
 ### 1. Preprocessing
 
@@ -160,7 +160,7 @@ A set comparison between the user's skills and a job's required skills produces:
 
 ---
 
-## 📊 Exploratory Data Analysis
+##  Exploratory Data Analysis
 
 The notebook generates 8 EDA visualizations:
 
@@ -177,7 +177,7 @@ The notebook generates 8 EDA visualizations:
 
 ---
 
-## 🧪 Example Test Cases
+##  Example Test Cases
 
 Three built-in test cases demonstrate the system:
 
@@ -189,7 +189,7 @@ Three built-in test cases demonstrate the system:
 
 ---
 
-## 📤 Output
+##  Output
 
 The recommendation function returns a ranked DataFrame:
 
@@ -204,7 +204,7 @@ The recommendation function returns a ranked DataFrame:
 
 ---
 
-## 📋 Summary
+##  Summary
 
 | Item | Detail |
 |------|--------|
